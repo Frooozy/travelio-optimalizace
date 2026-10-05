@@ -3,52 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travelio – cestovní agentura</title>
+    <title>Travelio – Cestovní agentura</title>
+    <meta name="description" content="Pečlivě vybrané zájezdy k moři i do hor s českým delegátem a pojištěním v ceně. Létáme z Prahy, Brna i Ostravy.">
+    
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/extra.css">
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </head>
 <body>
 
-    <div class="header">
+    <header class="header">
         <div class="container header-inner">
-            <a href="#" class="logo">Travel<span>io</span></a>
-            <nav class="nav">
+            <a href="/" class="logo">Travel<span>io</span></a>
+            <nav class="nav" aria-label="Hlavní navigace">
                 <a href="#destinace">Destinace</a>
                 <a href="#o-nas">O nás</a>
                 <a href="#kontakt">Kontakt</a>
             </nav>
         </div>
-    </div>
+    </header>
 
-    <div class="hero">
-        <img src="images/hero-travel.png" alt="Pobřeží s horami při západu slunce" class="hero-image">
-        <div class="hero-content">
-            <div class="hero-title"><b>Objevte svět s Travelio</b></div>
-            <p class="hero-text">Pečlivě vybrané zájezdy k moři i do hor. Postaráme se o letenky, ubytování i transfery – vy si jen sbalíte kufr.</p>
-            <a href="#destinace" class="btn btn-primary">Prohlédnout destinace</a>
-        </div>
-    </div>
+    <main id="hlavni-obsah">
 
-    <div class="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <img src="images/hero-travel.png" 
+                 alt="Pobřeží s horami při západu slunce" 
+                 class="hero-image" 
+                 fetchpriority="high" 
+                 loading="eager">
+            <div class="hero-content">
+                <h1 id="hero-title" class="hero-title">Objevte svět s Travelio</h1>
+                <p class="hero-text">Pečlivě vybrané zájezdy k moři i do hor. Postaráme se o letenky, ubytování i transfery – vy si jen sbalíte kufr.</p>
+                <a href="#destinace" class="btn btn-primary">Prohlédnout destinace</a>
+            </div>
+        </section>
 
-        <div class="intro container">
-            <p style="font-size:18px; color:#555555; text-align:center;">Létáme z Prahy, Brna i Ostravy. Všechny zájezdy jsou s českým delegátem a pojištěním v ceně.</p>
-        </div>
+        <section class="intro container" aria-label="Výhody cestování s námi">
+            <p class="intro-text">Létáme z Prahy, Brna i Ostravy. Všechny zájezdy jsou s českým delegátem a pojištěním v ceně.</p>
+        </section>
 
-        <div id="destinace" class="destinations container">
-            <div class="section-title destination-title">Oblíbené destinace</div>
+        <section id="destinace" class="destinations container" aria-labelledby="destinace-heading">
+            <h2 id="destinace-heading" class="section-title">Oblíbené destinace</h2>
 
             <div class="cards">
-                <div class="card">
-                    <img src="images/madeira.jpg" alt="Madeira – zelené hory nad oceánem" class="card-image">
+                <article class="card">
+                    <img src="images/madeira.jpg" 
+                         alt="Zelené hory a útesy nad oceánem na Madeiře" 
+                         class="card-image" 
+                         loading="lazy" 
+                         decoding="async">
                     <div class="card-body">
                         <h3>Madeira</h3>
                         <p>Ostrov věčného jara s levádami, útesy a čerstvým vzduchem z Atlantiku.</p>
                         <span class="price">od 24 990 Kč</span>
-                        <button class="btn btn-small offer-btn" data-target="offer-madeira">Zobrazit nabídku</button>
-                        <div class="offer" id="offer-madeira">
+                        <button type="button" 
+                                class="btn btn-small offer-btn" 
+                                aria-expanded="false" 
+                                aria-controls="offer-madeira">Zobrazit nabídku</button>
+                        <div class="offer" id="offer-madeira" hidden>
                             <ul>
                                 <li>8 dní, hotel ***+ ve Funchalu</li>
                                 <li>Snídaně, letenka, transfer</li>
@@ -56,16 +69,23 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="card">
-                    <img src="images/turkey.jpg" alt="Turecko – západ slunce nad mořem" class="card-image">
+                <article class="card">
+                    <img src="images/turkey.jpg" 
+                         alt="Plážový resort a západ slunce nad mořem v Turecku" 
+                         class="card-image" 
+                         loading="lazy" 
+                         decoding="async">
                     <div class="card-body">
                         <h3>Turecko</h3>
                         <p>All inclusive resorty, písečné pláže a tyrkysové moře pro celou rodinu.</p>
                         <span class="price">od 18 490 Kč</span>
-                        <button class="btn btn-small offer-btn" data-target="offer-turkey">Zobrazit nabídku</button>
-                        <div class="offer" id="offer-turkey">
+                        <button type="button" 
+                                class="btn btn-small offer-btn" 
+                                aria-expanded="false" 
+                                aria-controls="offer-turkey">Zobrazit nabídku</button>
+                        <div class="offer" id="offer-turkey" hidden>
                             <ul>
                                 <li>7 nocí, resort ***** v Antalyi</li>
                                 <li>All inclusive</li>
@@ -73,16 +93,23 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="card">
-                    <img src="images/greece.jpg" alt="obrazek" class="card-image">
+                <article class="card">
+                    <img src="images/greece.jpg" 
+                         alt="Typické bílé řecké domky s modrými střechami na Kykladách" 
+                         class="card-image" 
+                         loading="lazy" 
+                         decoding="async">
                     <div class="card-body">
                         <h3>Řecko</h3>
                         <p>Bílé domky, modrá okna a nejlepší gyros. Ostrovy pro romantiky i dobrodruhy.</p>
                         <span class="price">od 21 900 Kč</span>
-                        <button class="btn btn-small offer-btn" data-target="offer-greece">Zobrazit nabídku</button>
-                        <div class="offer" id="offer-greece">
+                        <button type="button" 
+                                class="btn btn-small offer-btn" 
+                                aria-expanded="false" 
+                                aria-controls="offer-greece">Zobrazit nabídku</button>
+                        <div class="offer" id="offer-greece" hidden>
                             <ul>
                                 <li>10 dní na Kykladách</li>
                                 <li>Polopenze, letenka, trajekt</li>
@@ -90,16 +117,23 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="card">
-                    <img src="images/italy.jpg" class="card-image">
+                <article class="card">
+                    <img src="images/italy.jpg" 
+                         alt="Kopcovitá toskánská krajina s vinicemi a cypřiši" 
+                         class="card-image" 
+                         loading="lazy" 
+                         decoding="async">
                     <div class="card-body">
                         <h3>Itálie</h3>
                         <p>Toskánské vinice, historická města a pravá italská kuchyně.</p>
                         <span class="price">od 15 990 Kč</span>
-                        <button class="btn btn-small offer-btn" data-target="offer-italy">Zobrazit nabídku</button>
-                        <div class="offer" id="offer-italy">
+                        <button type="button" 
+                                class="btn btn-small offer-btn" 
+                                aria-expanded="false" 
+                                aria-controls="offer-italy">Zobrazit nabídku</button>
+                        <div class="offer" id="offer-italy" hidden>
                             <ul>
                                 <li>6 dní v Toskánsku</li>
                                 <li>Ubytování v agroturistice</li>
@@ -107,14 +141,14 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
-        </div>
+        </section>
 
-        <div id="o-nas" class="about">
+        <section id="o-nas" class="about" aria-labelledby="o-nas-heading">
             <div class="container about-inner">
                 <div class="about-text">
-                    <h2 class="about-title">O nás</h2>
+                    <h2 id="o-nas-heading" class="about-title">O nás</h2>
                     <p>Travelio je malá česká cestovní agentura, která od roku 2012 pomáhá lidem objevovat krásná místa po celé Evropě. Každou destinaci jsme sami navštívili a ubytování osobně prověřili.</p>
                     <p>Zakládáme si na osobním přístupu, férových cenách a tom, aby se naši klienti vraceli domů odpočatí a s hlavou plnou zážitků.</p>
                 </div>
@@ -124,39 +158,45 @@
                     <div class="stat"><strong>4,9 / 5</strong><span>průměrné hodnocení</span></div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <section id="kontakt" class="contact container">
-            <h2 class="contact-title">Kontakt</h2>
+        <section id="kontakt" class="contact container" aria-labelledby="kontakt-heading">
+            <h2 id="kontakt-heading" class="contact-title">Kontakt</h2>
             <div class="contact-grid">
-                <div class="contact-info">
+                <address class="contact-info">
                     <p><strong>Travelio s.r.o.</strong></p>
                     <p>Náměstí Míru 15<br>120 00 Praha 2</p>
                     <p>Tel.: <a href="tel:+420777123456">+420 777 123 456</a></p>
                     <p>E-mail: <a href="mailto:info@travelio.cz">info@travelio.cz</a></p>
-                    <p style="font-size:14px; color:#777777;">Po–Pá 9:00–18:00</p>
-                </div>
-                <form class="contact-form" id="contact-form">
-                    <label for="name">Jméno</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="message">Zpráva</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <p class="opening-hours">Po–Pá 9:00–18:00</p>
+                </address>
+                <form class="contact-form" id="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">Jméno a příjmení</label>
+                        <input type="text" id="name" name="name" autocomplete="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Zpráva</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
                     <button type="submit" class="btn btn-primary">Odeslat poptávku</button>
-                    <p class="form-message" id="form-message"></p>
+                    <p class="form-message" id="form-message" aria-live="polite"></p>
                 </form>
             </div>
         </section>
 
-    </div>
+    </main>
 
-    <div class="footer">
+    <footer class="footer">
         <div class="container footer-inner">
             <p>&copy; 2026 Travelio s.r.o. Všechna práva vyhrazena.</p>
-            <p style="font-size:14px; color:#aaaaaa;">Fiktivní cestovní agentura</p>
+            <p class="footer-note">Fiktivní cestovní agentura</p>
         </div>
-    </div>
+    </footer>
 
 </body>
 </html>

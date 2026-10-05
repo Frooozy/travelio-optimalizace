@@ -1,32 +1,51 @@
-var animationSpeed = 300;
+/**
+ * Formátuje částku do české měny s pevnou mezerou.
+ * @param {number} price 
+ * @returns {string}
+ */
+const formatPrice = (price) =>
+    new Intl.NumberFormat('cs-CZ', {
+        style: 'currency',
+        currency: 'CZK',
+        maximumFractionDigits: 0
+    }).format(price);
 
-function formatPrice(price) {
-    return price.toLocaleString("cs-CZ") + " Kč";
-}
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Obsluha karet pomocí event delegation a ARIA standardů
+    const destinations = document.getElementById('destinace');
 
-document.addEventListener("DOMContentLoaded", function () {
-    var offerButtons = document.querySelectorAll(".offer-btn");
+    destinations?.addEventListener('click', (event) => {
+        const button = event.target.closest('.offer-btn');
+        if (!button) return;
 
-    offerButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            var offer = document.getElementById(button.dataset.target);
-            var isOpen = offer.classList.toggle("open");
+        const targetId = button.getAttribute('aria-controls') || button.dataset.target;
+        const offer = document.getElementById(targetId);
+        if (!offer) return;
 
-            if (isOpen) {
-                button.textContent = "Skrýt nabídku";
-            } else {
-                button.textContent = "Zobrazit nabídku";
-            }
-        });
+        const isOpening = offer.hidden;
+
+        // Přepnutí stavu v DOM a atributů přístupnosti
+        offer.hidden = !isOpening;
+        button.setAttribute('aria-expanded', String(isOpening));
+        button.textContent = isOpening ? 'Skrýt nabídku' : 'Zobrazit nabídku';
     });
 
-    var form = document.getElementById("contact-form");
-    var formMessage = document.getElementById("form-message");
+    // 2. Obsluha formuláře
+    const form = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
 
-    form.addEventListener("submit", function (event) {
+    form?.addEventListener('submit', (event) => {
         event.preventDefault();
-        var name = document.getElementById("name").value;
-        formMessage.textContent = "Děkujeme, " + name + "! Ozveme se vám do 24 hodin.";
+
+        // Moderní a bezpečné čtení dat z formuláře
+        const formData = new FormData(form);
+        const name = (formData.get('name') || '').trim();
+
+        if (formMessage) {
+            formMessage.textContent = `Děkujeme, ${name || 'kliente'}! Ozveme se vám do 24 hodin.`;
+            formMessage.className = 'form-message is-success';
+        }
+
         form.reset();
     });
 });
